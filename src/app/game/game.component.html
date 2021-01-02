@@ -1,0 +1,7 @@
+<div id="game">
+    <!-- <div class="square" *ngFor="let color of colors" style="background-color: {{ color }};">
+    </div> -->
+    <app-square  *ngFor="let color of colors"
+    [color]="color"
+    [colors]="colors"></app-square>
+</div>

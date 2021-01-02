@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "wiply-exercise"
+  "defaultProject": "wiply-exercise",
+  "cli": {
+    "analytics": false
+  }
 }
