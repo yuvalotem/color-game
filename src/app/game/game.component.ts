@@ -11,7 +11,6 @@ export class GameComponent implements OnInit {
   constructor(service: GameService) {
     this.colors = service.getColors()
   }
-
   ngOnInit(): void {
   }
 
