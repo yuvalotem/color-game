@@ -8,23 +8,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SquareComponent implements OnInit {
   createColor
-  @Input() color: string;
-  // @Input() colors: string[];
   colors: string[];
+  @Input() color: string;
   @Input() id: string;
   constructor(private service : GameService) {
     this.color = ''
     this.id = ''
-    this.colors = ['yellow', 'blue', 'pink', 'brown', 'black', 'red', 'grey', 'purple', 'orange']
+    this.colors = ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c', '#95a5a6']
     this.createColor = service.createColor
    }
    ngOnInit(): void {
   }
   changeColor(e:Event){
-    // console.log(e.target.id);
-    // this.color = this.colors[Math.floor(Math.random() * 10)]
     this.createColor((<HTMLTextAreaElement>e.target).id, this.colors[Math.floor(Math.random() * 10)])
-    // this.service.createColor(this.color)
   }
 
 }

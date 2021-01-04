@@ -1,2 +1,6 @@
-<div class="square" id="{{id}}" style="background-color: {{ color }};" (click)="changeColor($event)">
+<div
+class="square"
+id="{{id}}"
+[style.background-color]="color"
+(click)="changeColor($event)">
 </div>
