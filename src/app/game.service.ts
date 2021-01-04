@@ -6,34 +6,31 @@ interface colors {
   color: string;
   square: number;
 }
+interface partColor {
+  color: string;
+  square: number;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
   colors: colors[] = [];
   constructor(private firestore: AngularFirestore) { }
-  getColors(){
-    // this.colors=[]
+  getColors() {
     this.firestore.collection('colors').snapshotChanges().subscribe(data => {
       data.map(e => {
-        this.colors.push({
+        const data: colors = {
+          ...e.payload.doc.data() as partColor,
           id: e.payload.doc.id,
-          ...e.payload.doc.data()
-        })
+        }
+        this.colors.push(data)
         this.colors.length > 9 && this.colors.shift()
       })
-      this.colors.sort((a,b) => (a.square > b.square) ? 1 : ((b.square > a.square) ? -1 : 0));
+      this.colors.sort((a, b) => (a.square > b.square) ? 1 : ((b.square > a.square) ? -1 : 0));
     });
-    console.log(this.colors);
     return this.colors
   }
-  createColor(id: string, color: string){
-    // console.log(id);
-    // delete id;
-    console.log(color);
-
-    this.service.firestore.doc('colors/' + id).update({color: color});
-
-    // this.service.firestore.collection('colors').add({color: color, square:parseInt(id)});
-}
+  createColor = (id: string, color: string) => {
+    this.firestore.doc('colors/' + id).update({ color: color });
+  }
 }

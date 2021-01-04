@@ -1,5 +1,4 @@
 import { GameService } from './game.service';
-import { SquareService } from './square.service';
 import { SquareComponent } from './square/square.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,7 +26,6 @@ import { GameComponent } from './game/game.component';
     AngularFirestoreModule
   ],
   providers: [
-    SquareService,
     GameService
   ],
   bootstrap: [AppComponent]
